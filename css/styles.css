@@ -1,0 +1,232 @@
+/* ====== VARIABLES Y FUENTES ====== */
+:root {
+  --color-fondo: #1a1a1a;
+  --color-principal: #3d0066;
+  --color-secundario: #d8b4ff;
+  --color-boton: #6a0dad;
+  --color-boton-hover: #8e24aa;
+  --color-texto: #f3f3f3;
+  --border-color: #06000d;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ====== HEADER ====== */
+header {
+  background-color: var(--color-principal);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header .logo-img {
+  height: 120px;
+  width: auto;
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+nav ul li a {
+  color: var(--color-texto);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: var(--color-secundario);
+  border-bottom: 2px solid var(--color-secundario);
+}
+
+/* ====== MAIN ====== */
+main {
+  padding: 40px 60px;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ====== SECCIONES GRID ====== */
+.grid-presentacion,
+.grid-contacto,
+.grid-astros {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.presentacion h2 {
+  color: var(--color-secundario);
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contenido p {
+  margin-bottom: 25px;
+  font-size: 20px;
+}
+
+.imagen img,
+.imagen-astros img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  display: block;
+  margin: auto;
+}
+
+/* ====== BOTONES ====== */
+.btn-purple,
+form button {
+  background-color: var(--color-boton);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+.btn-purple:hover,
+form button:hover {
+  background-color: var(--color-boton-hover);
+}
+
+/* ====== FORMULARIO ====== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: auto;
+}
+
+form label {
+  text-align: left;
+}
+
+form input,
+form textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2b2b2b;
+  color: white;
+  transition: 0.3s;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border: 1px solid var(--color-secundario);
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background-color: var(--color-principal);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+footer img {
+  display: inline-block;
+}
+
+footer p {
+  font-size: 14px;
+  color: var(--color-secundario);
+}
+
+/* ====== SECCIÓN EXTRA PARA INDEX ====== */
+.extra-info {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--color-secundario);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+  .grid-presentacion,
+  .grid-contacto,
+  .grid-astros {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .imagen img,
+  .imagen-astros img {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 20px 30px;
+  }
+
+  .presentacion h2 {
+    font-size: 36px;
+  }
+
+  .contenido p {
+    font-size: 18px;
+  }
+
+  nav ul {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  header .logo-img {
+    height: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .presentacion h2 {
+    font-size: 28px;
+  }
+
+  .contenido p {
+    font-size: 16px;
+  }
+
+  form input,
+  form textarea,
+  form button {
+    font-size: 14px;
+  }
+
+  .imagen img,
+  .imagen-astros img {
+    max-width: 300px;
+  }
+}
