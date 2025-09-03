@@ -1,0 +1,188 @@
+/* ================= VARIABLES ================= */
+$color-bg: #1a1a1a;
+$color-primary: #3d0066;
+$color-secondary: #d8b4ff;
+$color-text: #f3f3f3;
+$font-main: 'Poppins', 'Segoe UI', sans-serif;
+
+/* ================= MIXINS ================= */
+@mixin flex-center($direction: row, $gap: 1rem) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  gap: $gap;
+}
+
+/* ================= PLACEHOLDERS (EXTEND) ================= */
+%btn-shared {
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ================= GLOBAL ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-main;
+  background: linear-gradient(135deg, $color-bg 0%, #2b003d 100%);
+  color: $color-text;
+  line-height: 1.6;
+}
+
+/* ================= HEADER ================= */
+header {
+  background-color: $color-primary;
+  padding: 15px 30px;
+
+  .logo-img {
+    height: 120px;
+    width: auto;
+  }
+
+  nav {
+    ul {
+      list-style: none;
+      @include flex-center(row, 20px);
+
+      li {
+        a {
+          color: $color-text;
+          text-decoration: none;
+          font-weight: 600;
+          transition: 0.3s;
+
+          &:hover,
+          &.active {
+            color: $color-secondary;
+            border-bottom: 2px solid $color-secondary;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ================= MAIN ================= */
+main {
+  padding: 40px 60px;
+  min-height: calc(100vh - 200px);
+}
+
+.presentacion {
+  h2 {
+    color: $color-secondary;
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 30px;
+
+    /* animación */
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  .contenido {
+    p {
+      margin-bottom: 25px;
+      font-size: 20px;
+    }
+  }
+
+  .imagen {
+    img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid #06000d;
+      display: block;
+      margin: auto;
+      animation: zoomIn 1.2s ease;
+    }
+  }
+}
+
+/* ================= FORMULARIO ================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: auto;
+
+  input,
+  textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: darken($color-bg, 5%);
+    color: $color-text;
+    transition: 0.3s;
+
+    &:focus {
+      outline: none;
+      border: 1px solid $color-secondary;
+    }
+  }
+
+  button {
+    @extend %btn-shared;
+    background-color: $color-primary;
+    color: white;
+    border: none;
+
+    &:hover {
+      background-color: lighten($color-primary, 10%);
+    }
+  }
+}
+
+/* ================= FOOTER ================= */
+footer {
+  background-color: $color-primary;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+
+  p {
+    font-size: 14px;
+    color: $color-secondary;
+  }
+}
+
+/* ================= ANIMACIONES ================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* ================= MEDIA QUERIES ================= */
+@media (max-width: 1024px) {
+  .presentacion {
+    h2 { font-size: 40px; }
+  }
+
+  .imagen img { max-width: 350px; }
+}
+
+@media (max-width: 768px) {
+  main { padding: 20px 30px; }
+  .presentacion h2 { font-size: 32px; }
+}
+
+@media (max-width: 480px) {
+  .presentacion h2 { font-size: 26px; }
+  .contenido p { font-size: 16px; }
+  .imagen img { max-width: 280px; }
+}
